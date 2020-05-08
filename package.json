@@ -5,7 +5,8 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "preinstall": "./bin/generateTempPreview.js"
   },
   "dependencies": {
     "expo": "~37.0.3",
