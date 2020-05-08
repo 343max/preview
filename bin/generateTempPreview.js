@@ -1,16 +1,30 @@
 #!/usr/bin/env node
 
+const fs = require("fs")
+
 const argv = process.argv
 
+function error(message) {
+  console.error(message)
+  process.exit(1)
+}
+
 var data
-
-if (argv.length == 4) {
-  // path / PreviewingFunction
-
+if (argv.length == 3) {
   const path = argv[2]
-  const call = argv[3]
 
-  data = `import { ${call} } from "${path}"
+  const source = fs.readFileSync(path, { encoding: "utf-8" })
+
+  const previewProvider = source.match(
+    /^export const ([A-Za-z_0-9]+)\s*:\s*PreviewProvider/m
+  )
+  if (!previewProvider) {
+    error("could not find a PreviewProvider")
+  }
+
+  const call = previewProvider[1]
+
+  data = `import { ${call} } from "./${path}"
 
 export const preview = {
   generator: ${call},
@@ -24,8 +38,7 @@ export const preview = {
 }
 
 if (data !== undefined) {
-  const fs = require("fs")
   fs.writeFileSync("Preview_Temp.js", data)
 } else {
-  console.error("incorrect usage!")
+  error("incorrect usage!")
 }
