@@ -13,7 +13,7 @@
       }
     },
     {
-      "label": "Preview: Active Preview for component in current file",
+      "label": "Preview: Activate Preview for component in current file",
       "type": "shell",
       "command": "${workspaceFolder}/bin/generateTempPreview.js ${relativeFile}",
       "problemMatcher": [],
