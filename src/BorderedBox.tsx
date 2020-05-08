@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import { View, Text } from "react-native"
-import { PreviewProvider } from "./PreviewProvider"
 
 interface BorderBoxProps {
   borderColor: string
@@ -13,6 +12,7 @@ export const BorderBox: FC<BorderBoxProps> = ({ borderColor, label }) => (
   </View>
 )
 
+import { PreviewProvider } from "./PreviewProvider"
 export const BorderedBoxPreview: PreviewProvider = () => [
   <BorderBox borderColor="#ff0" label="yellow" />,
   <BorderBox borderColor="#0f0" label="green" />,
