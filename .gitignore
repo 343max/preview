@@ -60,3 +60,7 @@ buck-out/
 
 # Expo
 .expo/*
+
+# Preview
+
+Preview_Temp.js
